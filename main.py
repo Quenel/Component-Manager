@@ -1,15 +1,10 @@
 import sqlite3
-import cv2
+
 from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget, QHBoxLayout, QPushButton, QLineEdit, QTableWidget, QTableWidgetItem, QHeaderView, QSizePolicy, QDialog, QLabel, QDialogButtonBox, QMessageBox, QCheckBox, QFileDialog
-from PyQt5.QtGui import QColor, QImage, QPixmap, QIcon
-from PyQt5.QtCore import Qt, QTimer
+from PyQt5.QtGui import QColor, QPixmap, QIcon
+from PyQt5.QtCore import Qt
 import sys
-import os
-import shutil
-import subprocess
-from PyQt5.QtGui import QDesktopServices
-from PyQt5.QtCore import QUrl
-from PyQt5.QtWidgets import QTextEdit
+
 
 from AddItemDialog import AddItemDialog
 from ViewItemDialog import ViewItemDialog
@@ -46,30 +41,6 @@ app_icon = QIcon(app_icon_path)
 app.setWindowIcon(app_icon)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -102,15 +73,6 @@ class MainWindow(QMainWindow):
         right_widget.setLayout(right_layout)
 
 
-        # # Create a QLineEdit for the text box
-        # self.text_box = QLineEdit()
-        # self.text_box.textChanged.connect(self.search_items)
-        # right_layout.addWidget(self.text_box)
-
-        # # Create buttons and add them to the right layout
-        # button1 = QPushButton("Search Item")
-        # button1.clicked.connect(self.search_items)
-        # right_layout.addWidget(button1)
 
 # Create a QLabel to display the image
         image_label = QLabel()
@@ -123,8 +85,6 @@ class MainWindow(QMainWindow):
         spacer = QWidget()
         spacer.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         right_layout.addWidget(spacer)
-
-
 
 
         # Create a QLineEdit for the text box
@@ -194,7 +154,6 @@ class MainWindow(QMainWindow):
             self.add_item(*item_data, dialog.datasheet if hasattr(dialog, 'datasheet') else '')
 
 
-    
 
     def add_item(self, name, model, qty, storage_location, price_per_unit, description, project, ordered, purchase_price_input, used_part,  place_of_purchase, datasheet=None):
         c.execute(
@@ -202,7 +161,6 @@ class MainWindow(QMainWindow):
             (name, model, qty, storage_location, price_per_unit, description, project, ordered, purchase_price_input, used_part,  place_of_purchase, datasheet))
         conn.commit()
         self.load_data()
-
 
 
     def view_item(self, row):
@@ -241,10 +199,6 @@ class MainWindow(QMainWindow):
             search_term = self.text_box.text()
             self.load_data(search_term)
 
-
-
-
-
     def export_to_csv(self):
         # Get all the data from the database
         c.execute("SELECT * FROM items")
@@ -270,8 +224,6 @@ class MainWindow(QMainWindow):
                 QMessageBox.warning(self, "Export Failed", f"Failed to export data to CSV:\n{str(e)}")
         else:
             QMessageBox.warning(self, "Export Cancelled", "Export to CSV cancelled.")
-
-
 
  
 

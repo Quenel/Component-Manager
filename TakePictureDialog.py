@@ -3,13 +3,7 @@ import cv2
 from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget, QHBoxLayout, QPushButton, QLineEdit, QTableWidget, QTableWidgetItem, QHeaderView, QSizePolicy, QDialog, QLabel, QDialogButtonBox, QMessageBox, QCheckBox, QFileDialog
 from PyQt5.QtGui import QColor, QImage, QPixmap
 from PyQt5.QtCore import Qt, QTimer
-import sys
-import os
-import shutil
-import subprocess
-from PyQt5.QtGui import QDesktopServices
-from PyQt5.QtCore import QUrl
-from PyQt5.QtWidgets import QTextEdit
+
 
 
 
